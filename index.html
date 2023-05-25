@@ -1,87 +1,241 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Login Modal Box</title>
+  <title>Login Popup Example</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
   <style>
-    /* Style for modal box */
-    .modal {
-      display: none; /* Hide the modal by default */
-      position: fixed; /* Position the modal */
-      z-index: 1; /* Make sure it appears on top of other elements */
-      left: 0;
+    /* Styles for the blurred background effect */
+
+    @font-face {
+      font-family: "music";
+      src: url(assets/font/ChopinScript.ttf);
+    }
+
+    @font-face {
+      font-family: "music1";
+      src: url(assets/font/LemonJellyPersonalUse-dEqR.ttf);
+    }
+
+    body{
+      overflow-x: hidden;
+    }
+    #login {
+      position: fixed;
       top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      overflow: auto; /* Enable scrolling if needed */
-      background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: none;
     }
-    
-    .modal-content {
-      background-color: #fefefe;
-      margin: 15% auto; /* 15% from the top and centered horizontally */
-      padding: 20px;
-      border: 1px solid #888;
-      width: 80%; /* Adjust width to your needs */
+
+    /* Custom theme */
+    .custom-swal-theme .swal2-popup {
+      background-color: #f5f5f5;
+      color: #333;
     }
-    
-    /* Style for the close button */
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
+
+    .custom-swal-theme .swal2-title {
+      color: #333;
     }
-    
-    .close:hover,
-    .close:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
+
+    .custom-swal-theme .swal2-content {
+      color: #666;
+    }
+
+    .custom-swal-theme .swal2-input,
+    .custom-swal-theme .swal2-validationerror {
+      border-color: #999;
+    }
+
+    #carouselExampleFade {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      z-index: -1;
+    }
+
+    .nav-item {
+      font-family: '';
+    }
+
+    #button {
+      background-color: rgb(61, 153, 96);
+      border-radius: 20px;
+    }
+
+    #music {
+      margin-top: 100px;
+      margin-left: 150px;
+    }
+
+    #newcontainer {
+      margin-top: 117px;
+      height: 700px;
+      background-image: linear-gradient(to bottom right, rgb(0, 0, 0), rgb(253, 253, 253));
+    }
+
+    #sideimg {
+      translate: -50px;
+      height: 300px;
+    }
+    #enter{
+      font-family:'music1';
+      color: rgb(255, 255, 255);
+      font-size:70px;
+      text-shadow: 2px 2px #8b7c7c;
+      
     }
   </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 </head>
+
 <body>
-  <h1>Welcome to My Website!</h1>
-  
-  <!-- The Modal -->
-  <div id="myModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Login</h2>
-      <form>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        <input type="submit" value="Login">
-      </form>
+  <div id="login"></div>
+  </div>
+  <div class="container-fluid" id="page1">
+    <div class="row">
+      <!-- navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light  bg-transparent" id="navbar">
+        <!--navbar logo-->
+        <div class=" col-1 col-sm-1 col-md-1 col-lg-1 ">
+          <a class="navbar-brand ms-1" href="#">
+            <img src="assets/icon.png" class="img-fluid" width="50px" alt="logo">
+          </a>
+        </div>
+        <h4 style="color: rgb(252, 252, 252); font-family:'music';">Piano Man</h4>
+        <!-- toggle button -->
+        <button class="navbar-toggler col-md-auto" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span></button>
+        <!-- navbar contents -->
+        <div class="col-10 ms-2">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-4">
+              <li class="nav-item">
+                <a class="nav-link link-light text-white" href="#">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link-light text-white" href="#">PLANS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link-light text-white" href="#">LEARN MORE</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link-light text-white" href="#">CONTACT US</a>
+              </li>
+              <li class="nav-item">
+                <!-- button -->
+              <li class="nav-item">
+                <button class="border-0 mt-1 ms-2 ps-2 pe-2 pt-1 pb-1 text-white" id="button"
+                  type="submit">DOWNLOAD</button>
+              </li>
+            </ul>
+          </div>
+      </nav>
     </div>
   </div>
 
+  <!--caroseal-->
+  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="assets/piano1.jpg" class="d-block w-100" height="500px">
+      </div>
+      <div class="carousel-item">
+        <img src="assets/piano2.jpg" class="d-block w-100" height="500px">
+      </div>
+      <div class="carousel-item">
+        <img src="assets/piano5.jpg" class="d-block w-100" height="500px">
+      </div>
+    </div>
+  </div>
+  <div class="flex" style="display: flex;">
+    <div class="container" id="music">
+      <h1 style="color: white;font-family: 'Music'; font-size:100px;">Music</h1>
+      <h4 style="color: white;font-family: '';"><i>Heals The World</i></h4>
+    </div>
+    <img src="assets/symbol.gif" style="height: 100px;width: auto; margin-top:200px;margin-right:-150px;"
+      class="img-fluid" alt="Responsive image">
+    <img src="assets/symbol.gif" style="height: 150px;width: auto; margin-top:50px;margin-right:-100px;"
+      class="img-fluid" alt="Responsive image">
+    <img src="assets/symbol.gif" style="height: 300px;width: auto;" class="img-fluid" alt="Responsive image">
+  </div>
+  <div class="container-fluid" id="newcontainer">
+    <div class="container-fluid" style="display: flex;">
+      <div class="col-1"><img src="assets/pngwing.com.png" id="sideimg"></div>
+      <div class="container col-6">
+        <pre id="enter">
+                Enters Into The
+                  World Of
+                   Music
+</pre>  
+      </div>
+      <div class="col-2"><img src="assets/rs-img (2).gif" id="sideimg"></div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
   <script>
-    // Get the modal element
-    const modal = document.getElementById("myModal");
+    // Function to show the blurred background and login popup
+    function showLoginPopup() {
+      Swal.fire({
+        title: 'Login',
+        html:
+          '<input id="swal-input-username" class="swal2-input" type="text" placeholder="Username" required>' +
+          '<input id="swal-input-password" class="swal2-input" type="password" placeholder="Password" required>',
+        showCancelButton: true,
+        confirmButtonText: 'Log in',
+        focusConfirm: false,
+        customClass: {
+          popup: 'custom-swal-theme'
+        },
+        didOpen: () => {
+          Swal.getFocusableElements().forEach((element) => {
+            element.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                Swal.clickConfirm();
+              }
+            });
+          });
+        },
+        preConfirm: () => {
+          const username = Swal.getPopup().querySelector('#swal-input-username').value;
+          const password = Swal.getPopup().querySelector('#swal-input-password').value;
 
-    // Get the close button element
-    const closeBtn = document.getElementsByClassName("close")[0];
+          if (!username || !password) {
+            Swal.showValidationMessage('Please enter both username and password');
+            return false; // Prevent closing the popup
+          }
 
-    // Open the modal when the page is loaded
-    window.onload = function() {
-      modal.style.display = "block";
-    };
+          // You can add your own logic here to validate the credentials
+          // For this example, we're just displaying an alert with the entered values
+          Swal.fire({
+            icon: 'success',
+            title: 'Logged in!',
+            html: `Welcome ${username}`
+          });
+        }
+      }).then((result) => {
+        if (result.dismiss === Swal.DismissReason.cancel) {
+          // Handle cancel button click if needed
+          // For this example, we're not doing anything
+        }
+      });
 
-    // Close the modal when the close button is clicked
-    closeBtn.onclick = function() {
-      modal.style.display = "none";
-    };
+      blurBackground.style.display = "block";
+    }
 
-    // Close the modal when the user clicks outside of it
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    };
+    // Wait for 2 seconds and then show the login popup
+    setTimeout(showLoginPopup, 2000);
   </script>
 </body>
+
 </html>
