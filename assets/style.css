@@ -1,192 +1,228 @@
    /* Styles for the blurred background effect */
 
    @font-face {
-    font-family: "music";
-    src: url(font/ChopinScript.ttf);
-  }
+     font-family: "music";
+     src: url(font/ChopinScript.ttf);
+   }
 
-  @font-face {
-    font-family: "music1";
-    src: url(font/LemonJellyPersonalUse-dEqR.ttf);
-  }
+   @font-face {
+     font-family: "music1";
+     src: url(font/LemonJellyPersonalUse-dEqR.ttf);
+   }
 
-  body{
-    overflow-x: hidden;
-  }
-  #login {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(8px);
-    z-index: 9999;
-    display: none;
-  }
+   body {
+     overflow-x: hidden;
+   }
 
-  /* Custom theme */
-  .custom-swal-theme .swal2-popup {
-    background-color: #f5f5f5;
-    color: #333;
-  }
+   #login {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     backdrop-filter: blur(8px);
+     z-index: 9999;
+     display: none;
+   }
 
-  .custom-swal-theme .swal2-title {
-    color: #333;
-  }
+   /* Custom theme */
+   .custom-swal-theme .swal2-popup {
+     background-color: #f5f5f5;
+     color: #333;
+   }
 
-  .custom-swal-theme .swal2-content {
-    color: #666;
-  }
+   .custom-swal-theme .swal2-title {
+     color: #333;
+   }
 
-  .custom-swal-theme .swal2-input,
-  .custom-swal-theme .swal2-validationerror {
-    border-color: #999;
-  }
+   .custom-swal-theme .swal2-content {
+     color: #666;
+   }
 
-  #carouselExampleFade {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    z-index: -1;
-  }
+   .custom-swal-theme .swal2-input,
+   .custom-swal-theme .swal2-validationerror {
+     border-color: #999;
+   }
 
-  .nav-item {
-    font-family: '';
-  }
+   #carouselExampleFade {
+     position: absolute;
+     width: 100%;
+     top: 0;
+     z-index: -1;
+   }
 
-  #button {
-    background-color: rgb(61, 153, 96);
-    border-radius: 20px;
-  }
+   .nav-item {
+     font-family: '';
+   }
 
-  #music {
-    margin-top: 100px;
-    margin-left: 150px;
-  }
+   #button {
+     background-color: rgb(61, 153, 96);
+     border-radius: 20px;
+   }
 
-  #maincontainer{
-    background-image: linear-gradient(to bottom right, rgb(0, 0, 0), rgb(229, 229, 229));
-  }
-  #newcontainer {
-    margin-top: 117px;
-  }
+   #music {
+     margin-top: 100px;
+     margin-left: 150px;
+   }
 
-  #sideimg {
-    translate: -50px;
-    height: 300px;
-  }
+   #maincontainer {
+     background-image: linear-gradient(to bottom right, rgb(0, 0, 0), rgb(229, 229, 229));
+   }
 
-  #sideimg1{
-    translate:-40px ;
-    height: 315px;
-  }
-  #enter{
-    font-family:'music1';
-    color: rgb(255, 255, 255);
-    font-size:70px;
-    text-shadow: 2px 2px #8b7c7c;
-    
-  }
-  .wrapper{
-    margin-left:270px;
-    background-color: black;
-    width:780px;
-    border-radius: 20px;
-  padding: 35px 40px;
-  }
-  .wrapper header{
-    color: rgb(211, 208, 208);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-family: 'music1';
-    font-size:x-large;
-  }
+   #newcontainer {
+     margin-top: 117px;
+   }
 
-  header .column{
-    display: flex;
-    align-items: center ;
-  }
-  header .column span{
-    font-weight: 500;
-    font-size: larger;
-    margin-right: 15px;
-  }
-  .volume-slider input{
-    accent-color:rgb(211, 208, 208); 
-    outline: none;
-  }
-  .keys-checkbox input{
-    appearance:none;
-    position: relative;
-    width: 50px;
-    height: 20px;
-    background-color: #737373;
-    border-radius: 30px;
-    cursor: pointer;
-  }
-  .keys-checkbox input::before{
-    content: '';
-    position: absolute;
-    height: 15px;
-    width:15px;
-    top:50%;
-    left:3px;
-    border-radius: inherit;
-    background-color: #ffffff;
-    transform: translateY(-50%);
-    transition: all 0.3s ease;
-  }
-  .keys-checkbox input:checked:before{
-    left: 31px;
-    background-color: #ffffff;
-  }
-  .piano-keys {
-    display: flex;
-    margin-top: 50px;
-  }
-  .piano-keys .key {
-    color: rgb(206, 205, 205);
-    list-style: none;
-    position: relative;
-    user-select: none;
-    text-transform: uppercase;
-    cursor: pointer;
-  }
-  .piano-keys .white{
-    width:70px;
-    height: 230px;
-    border-radius: 8px;
-    border: 1px solid black;
-    background:linear-gradient(white 97%,#eee 3%);
-  }
-  .piano-keys .white.active{
-    box-shadow: inset -5px 20px 20px rgba(0,0,0,0.4);
-    height: 235px;
-    background:linear-gradient(to bottom #c0c0c0 ,#b0b0b0 );
-  }
-  .piano-keys .black{
-    width:45px;
-    height: 140px;
-    border-radius:0 0 5px 5px;
-    margin:0 -22px 0 -22px;
-    z-index: 2;
-    background:linear-gradient(#333 97%,#000 3%);
-  }
-  .piano-keys .black.active{
-    height: 145px;
-    box-shadow: inset -5px 5px 10px rgba(160, 160, 160, 0.2);
-    background:linear-gradient(to bottom #000 ,#434343);
-  }
-  .piano-keys span{
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    text-align: center;
-  }
+   #sideimg {
+     translate: -50px;
+     height: 300px;
+   }
 
-  /*css for cards*/
-  #cards{
-    display: flex;
-    margin-top: ;
-  }
+   #sideimg1 {
+     translate: -40px;
+     height: 315px;
+   }
+
+   #enter {
+     font-family: 'music1';
+     color: rgb(255, 255, 255);
+     font-size: 70px;
+     text-shadow: 2px 2px #8b7c7c;
+
+   }
+
+   .wrapper {
+     margin-left: 270px;
+     background-color: black;
+     width: 780px;
+     border-radius: 20px;
+     padding: 35px 40px;
+   }
+
+   .wrapper header {
+     color: rgb(211, 208, 208);
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     font-family: 'music1';
+     font-size: x-large;
+   }
+
+   header .column {
+     display: flex;
+     align-items: center;
+   }
+
+   header .column span {
+     font-weight: 500;
+     font-size: larger;
+     margin-right: 15px;
+   }
+
+   .volume-slider input {
+     accent-color: rgb(211, 208, 208);
+     outline: none;
+   }
+
+   .keys-checkbox input {
+     appearance: none;
+     position: relative;
+     width: 50px;
+     height: 20px;
+     background-color: #737373;
+     border-radius: 30px;
+     cursor: pointer;
+   }
+
+   .keys-checkbox input::before {
+     content: '';
+     position: absolute;
+     height: 15px;
+     width: 15px;
+     top: 50%;
+     left: 3px;
+     border-radius: inherit;
+     background-color: #ffffff;
+     transform: translateY(-50%);
+     transition: all 0.3s ease;
+   }
+
+   .keys-checkbox input:checked:before {
+     left: 31px;
+     background-color: #ffffff;
+   }
+
+   .piano-keys {
+     display: flex;
+     margin-top: 50px;
+   }
+
+   .piano-keys .key {
+     color: rgb(206, 205, 205);
+     list-style: none;
+     position: relative;
+     user-select: none;
+     text-transform: uppercase;
+     cursor: pointer;
+   }
+
+   .piano-keys .white {
+     width: 70px;
+     height: 230px;
+     border-radius: 8px;
+     border: 1px solid black;
+     background: linear-gradient(white 97%, #eee 3%);
+   }
+
+   .piano-keys .white.active {
+     box-shadow: inset -5px 20px 20px rgba(0, 0, 0, 0.4);
+     height: 235px;
+     background: linear-gradient(to bottom #c0c0c0, #b0b0b0);
+   }
+
+   .piano-keys .black {
+     width: 45px;
+     height: 140px;
+     border-radius: 0 0 5px 5px;
+     margin: 0 -22px 0 -22px;
+     z-index: 2;
+     background: linear-gradient(#333 97%, #000 3%);
+   }
+
+   .piano-keys .black.active {
+     height: 145px;
+     box-shadow: inset -5px 5px 10px rgba(160, 160, 160, 0.2);
+     background: linear-gradient(to bottom #000, #434343);
+   }
+
+   .piano-keys span {
+     position: absolute;
+     bottom: 20px;
+     width: 100%;
+     text-align: center;
+   }
+
+   .piano-keys .key.hide span {
+     display: none;
+   }
+
+   /*css for cards*/
+   #cards {
+     display: flex;
+     margin-top: 150px;
+   }
+
+   #rowcard {
+     border-radius: 10px;
+     box-shadow: 10px 10px 15px rgb(48, 48, 48);
+
+   }
+
+   #rowcard:hover {
+     transform: scale(1.1);
+      box-shadow: 10px 10px 35px rgb(48, 48, 48);
+   }
+
+   #cardimg {
+     border-radius: 10px 10px 0px 0px;
+   }
