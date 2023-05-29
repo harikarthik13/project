@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Login Page</title>
+  <style>
+    body {
+      background: url("assets/piano3.jpg") no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      position: relative;
+      z-index: -1;
+    }
+
+    .login-form {
+      backdrop-filter: blur(10px);
+      /* Frosted glass effect */
+      background-color: rgba(61, 61, 61, 0.3);
+      /* Translucent background */
+      border-radius: 20px;
+      box-shadow: 5px 5px 5px 2px rgba(53, 53, 53, 0.5);
+      text-align: center;
+      padding: 40px;
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .login-form h2 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .login-form input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      box-sizing: border-box;
+      background-repeat: no-repeat;
+      background-position: 10px center;
+      padding-left: 40px;
+      background-color: #f9f9f9;
+      background-size: 20px;
+    }
+
+    .login-form h2 {
+      margin-top: 0;
+      color: rgb(253, 253, 253);
+    }
+
+    .login-form input[type="text"] {
+      background-image: url("/assets/username-icon.png");
+    }
+
+    .login-form input[type="password"] {
+      background-image: url("/assets/password-icon.png");
+    }
+
+    .login-form button {
+      width: auto;
+      padding: 12px 24px;
+      background-color: blue;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      /* Add box shadow effect */
+      transition: transform 0.3s ease-in-out;
+      /* Add transition animation */
+    }
+
+    .login-form button:hover {
+      background-color: #003366;
+      transform: scale(1.05);
+      /* Apply scale transformation on hover */
+    }
+
+     .signup-icon{
+      margin-top: 30px;
+      margin-bottom: -30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: black;
+      margin-left: 40px;
+      font-size: 12px;
+    }
+
+    .google-icon i,
+    .twitter-icon i,
+    .facebook-icon i {
+      margin-left: 20px;
+    }
+
+    .google-icon:hover,
+    .twitter-icon:hover,
+    .facebook-icon:hover {
+      color: rgb(210, 210, 210);
+    }
+
+    .error-message {
+      color: red;
+      margin-top: 10px;
+      opacity: 0;
+      animation: fadeIn 0.3s ease-in-out forwards;
+    }
+
+    .error-message.show {
+      opacity: 1;
+      animation: none;
+    }
+
+    .forgot-password {
+      margin-top: 10px;
+      margin-left:-8px;
+      font-family: 'Times New Roman', Times, serif;
+      text-align: right;
+      color: white;
+    }
+
+    .signup-link {
+      margin-top: 8px;
+      margin-right:-3px;
+      text-decoration: underline;
+      font-family: 'Times New Roman', Times, serif;
+      cursor: pointer;
+      color: white;
+      align-self: flex-start;
+    }
+
+    .footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 20px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+
+<body>
+  <div class="login-form">
+    <img src="assets/login-animation.gif" alt="Login Animation" width="125" height="125">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username" autocomplete="off">
+    <p id="username-error" class="error-message"></p>
+    <input type="password" id="password" placeholder="Password" autocomplete="off">
+    <p id="password-error" class="error-message"></p>
+    <button onclick="validateLogin()">Login</button>
+    <div class="footer">
+      <a href="#" class="forgot-password" onclick="showForgotPasswordPrompt()">Forgot Password?</a>
+      <div class="signup-link" onclick="showSignupPrompt()">Sign Up</div>
+      <div class="signup-icon">
+      <div class="google-icon">
+        <i class="fab fa-google"></i> Google
+      </div>
+      <div class="google-icon">
+        <i class="fab fa-twitter"></i> Twitter
+      </div>
+      <div class="google-icon">
+        <i class="fab fa-facebook"></i> Facebook
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <script>
+    function validateLogin() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+      var usernameRegex = /^[a-zA-Z0-9]{4,12}$/; // Regex to validate username: 4-12 characters, alphanumeric
+      var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,12}$/; // Regex to validate password: at least 6 characters, one uppercase, one lowercase, one digit
+
+      var isUsernameValid = usernameRegex.test(username);
+      var isPasswordValid = passwordRegex.test(password);
+
+      showErrorMessage('username-error', !isUsernameValid, "Invalid username.");
+      showErrorMessage('password-error', !isPasswordValid, "Invalid password.");
+
+      if (isUsernameValid && isPasswordValid) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          }
+        });
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Login Successful!'
+        }).then((result) => {
+          if (result.dismiss === Swal.DismissReason.timer) {
+            window.location.href = "index.html"; // Redirect to index page
+          }
+        });
+      }
+    }
+
+    function showErrorMessage(elementId, condition, message) {
+      var element = document.getElementById(elementId);
+
+      if (condition) {
+        element.textContent = message;
+        element.classList.add('show');
+        anime({
+          targets: element,
+          translateY: ['-10px', '0px'],
+          opacity: [0, 1],
+          easing: 'easeOutQuad',
+          duration: 300
+        });
+      } else {
+        element.classList.remove('show');
+      }
+    }
+
+    function showForgotPasswordPrompt() {
+      Swal.fire({
+        title: 'Forgot Password',
+        html: 'Please enter your email:',
+        input: 'email',
+        showCancelButton: true,
+        confirmButtonText: 'Submit',
+        cancelButtonText: 'Cancel',
+        showLoaderOnConfirm: true,
+        preConfirm: (email) => {
+          // Here you can handle the forgot password logic
+          // For demonstration purposes, we'll just show a success message
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              resolve();
+            }, 2000);
+          });
+        },
+        allowOutsideClick: false
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Password Reset Email Sent!',
+            text: 'Please check your email for further instructions.'
+          });
+        }
+      });
+    }
+
+    function showSignupPrompt() {
+      Swal.fire({
+        title: 'Sign Up',
+        html: 'Please enter your email and password:<br><br>' +
+          '<input type="email" id="signup-email" class="swal2-input" placeholder="Email" autocomplete="off">' +
+          '<input type="password" id="signup-password" class="swal2-input" placeholder="Password" autocomplete="off">',
+        showCancelButton: true,
+        confirmButtonText: 'Submit',
+        cancelButtonText: 'Cancel',
+        focusConfirm: false,
+        preConfirm: () => {
+          var email = document.getElementById('signup-email').value;
+          var password = document.getElementById('signup-password').value;
+
+          var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regex to validate email
+          var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,12}$/; // Regex to validate password: at least 6 characters, one uppercase, one lowercase, one digit
+
+          var isEmailValid = emailRegex.test(email);
+          var isPasswordValid = passwordRegex.test(password);
+
+          if (!isEmailValid) {
+            Swal.showValidationMessage('Invalid email.');
+          } else if (!isPasswordValid) {
+            Swal.showValidationMessage('Invalid password.');
+          }
+
+          return {
+            email: email,
+            password: password
+          };
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          var email = result.value.email;
+          var password = result.value.password;
+
+          // Here you can handle the signup logic
+          // For demonstration purposes, we'll just show a success message
+          Swal.fire({
+            icon: 'success',
+            title: 'Sign Up Successful!',
+            text: 'Welcome, ' + email + '!'
+          }).then(() => {
+            window.location.href = "index.html";
+          });
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
